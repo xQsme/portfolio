@@ -49,6 +49,10 @@ body{
     top:0px;
     bottom:0px;
     left:0px;   
+    width: 172px;
+    -webkit-transition: width 0.3s linear;
+    -moz-transition: width 0.3s linear;
+    transition: width 0.3s linear;
 }
 
 .content{
@@ -94,10 +98,7 @@ body{
         -webkit-transition: opacity 0.3s linear;
         -moz-transition: opacity 0.3s linear;
         transition: opacity 0.3s linear;
-
-        .nav-border{
-            margin-right: 20px;
-        }
+        margin-left: 20px;
     
         a{
             text-decoration: none;
@@ -109,23 +110,61 @@ body{
         }
     }
 
-
+    .nav-entry{
+        display: flex;
+        align-items: center;
+        svg{
+            margin-right: 5px;
+        }
+    }
 
     .active{
-        // color: $main;
         opacity: 1;
+    }
 
-        // .nav-border{
-        //     // background-color: $main;
-        //     background-color: $text;
-        //     width: 4px;
-        //     height: 23px;
-        //     margin-left: -1px;
-        //     margin-right: 17px;
-        //     border-radius: 2px;
-        //     z-index: 9001;
-        //     margin-top: 3px;
-        // }
+    .nav-word{
+        white-space: nowrap;
     }
 }
 
+.mobile-nav-expand{
+    position: relative;
+    display: none !important;
+    margin-left: 12px !important;
+    top: -12px;
+}
+
+@mixin mq($width, $type: max) {
+    @if $type == max {
+        $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+        @content;
+    }
+    }@mixin mq($width, $type: max) {
+    @if $type == max {
+        $width: $width - 1px;
+    }
+    @media only screen and (#{$type}-width: $width) {
+        @content;
+    }
+}
+
+@include mq(475px) {
+
+    .shrinked{
+        width: 69px;
+        .nav-word{
+            display: none;
+        }
+    }
+
+    .nav-container{
+        margin-right: 20px;
+    }
+
+    .mobile-nav-expand{
+        display: block !important;
+    }
+
+}
