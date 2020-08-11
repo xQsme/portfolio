@@ -4,12 +4,11 @@ import Skills from '@material-ui/icons/Build';
 import Technologies from '@material-ui/icons/Settings';
 import Projects from '@material-ui/icons/Dashboard';
 import Contacts from '@material-ui/icons/Chat';
-import Left from '@material-ui/icons/ChevronLeft';
-import Right from '@material-ui/icons/ChevronRight';
 
 
 let mainNavLinks: any = [];
 let maybeMyElement: HTMLElement = document.getElementById('app') as HTMLElement;
+let navContainer: HTMLElement = document.getElementById('nav-container') as HTMLElement;
 
 interface NavProps {
 }
@@ -17,6 +16,8 @@ interface NavProps {
 interface NavState {
     currentSection: number,
     expanded: boolean,
+    initialPos: any,
+    latestPos: any,
 }
 
 class Nav extends Component <NavProps, NavState> {
@@ -25,6 +26,8 @@ class Nav extends Component <NavProps, NavState> {
     this.state = {
       currentSection: 0,
       expanded: false,
+      initialPos: {x: 0, y: 0},
+      latestPos: {x: 0, y: 0},
     };
   }
 
@@ -44,6 +47,40 @@ class Nav extends Component <NavProps, NavState> {
     mainNavLinks = document.querySelectorAll(".nav .nav-element a");
     maybeMyElement = document.getElementById('app') as HTMLElement;
     maybeMyElement.addEventListener("scroll", this.scrollFunc);
+    navContainer = document.getElementById('nav-container') as HTMLElement;
+    navContainer.addEventListener("mousedown", this.mouseDown);
+    navContainer.addEventListener("mousemove", this.mouseMove);
+    navContainer.addEventListener("touchstart", this.mouseDown);
+    navContainer.addEventListener("touchmove", this.mouseMove);
+  }
+
+  mouseDown = (evt: any) => {
+    if(evt.changedTouches !== undefined) {
+      this.setState({initialPos: {x: evt.changedTouches[0].clientX, y: evt.changedTouches[0].clientY}});
+    } else {
+      this.setState({initialPos: {x: evt.clientX, y: evt.clientY}});
+    }
+    setTimeout(this.shouldToggleExpand, 200);
+  }
+
+  mouseMove = (evt: any) => {
+    if(evt.changedTouches !== undefined) {
+      this.setState({latestPos: {x: evt.changedTouches[0].clientX, y: evt.changedTouches[0].clientY}});
+    } else {
+      this.setState({latestPos: {x: evt.clientX, y: evt.clientY}});
+    }
+  }
+
+  shouldToggleExpand = () => {
+    const { initialPos, latestPos, expanded } = this.state;
+    const displacementX = latestPos.x - initialPos.x;
+    const displacementY = latestPos.y - initialPos.y;
+    if(Math.abs(displacementY) > Math.abs(displacementX)) {
+      return;
+    }
+    if((expanded && displacementX < 0) || (!expanded && displacementX > 0)) {
+      this.toggleExpanded();
+    }
   }
 
   scrollTo = (index: number) => {
@@ -73,7 +110,7 @@ class Nav extends Component <NavProps, NavState> {
   render () {
     const { currentSection, expanded } = this.state;
     return(
-    <div className={"nav-container" + (expanded ? '' : ' shrinked')}>
+    <div id="nav-container" className={"nav-container" + (expanded ? '' : ' shrinked')}>
         <div className="nav">
           <div className="nav-border-main" />
           <div className="nav-border-selected" style={{marginTop: currentSection*30 + 'px'}} />
@@ -109,9 +146,15 @@ class Nav extends Component <NavProps, NavState> {
           </div>
         </div>
         {expanded ? (
-          <Left onClick={this.toggleExpanded} className="mobile-nav-expand" />
+          <div id="cta" className="arrow-left" onClick={this.toggleExpanded}>
+            <span className="arrow primera next"></span>
+            <span className="arrow segunda next"></span>
+          </div>
         ) : (
-          <Right onClick={this.toggleExpanded} className="mobile-nav-expand" />
+          <div id="cta" onClick={this.toggleExpanded}>
+            <span className="arrow primera next"></span>
+            <span className="arrow segunda next"></span>
+          </div>
         )}
     </div>
     );

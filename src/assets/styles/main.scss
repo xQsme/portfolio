@@ -38,24 +38,39 @@ body{
     scroll-behavior: smooth;
 }
 
+.nav-spacer{
+    width: 7vw;
+    flex: 1 0 auto;
+    -webkit-transition: width 0.3s linear;
+    -moz-transition: width 0.3s linear;
+    transition: width 0.3s linear;
+}
+
 .nav-container{
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     flex: 1 0 auto;
-    margin-right: 50px;
+    margin-right: 10vw;
     position: sticky;
     top:0px;
-    bottom:0px;
+    bottom: 0px;
     left:0px;   
     width: 172px;
     -webkit-transition: width 0.3s linear;
     -moz-transition: width 0.3s linear;
     transition: width 0.3s linear;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 }
 
 .content{
+    margin-right: 10vw;
 }
 
 .content-spacer{
@@ -63,9 +78,12 @@ body{
 }
 
 .nav{
-    margin-bottom: 20px;
     margin-left: 20px;
     position: relative;
+    margin-bottom: 20vh;
+    -webkit-transition: margin-bottom 0.3s linear;
+    -moz-transition: margin-bottom 0.3s linear;
+    transition: margin-bottom 0.3s linear;
 
     .nav-border-main{
         position: absolute;
@@ -127,11 +145,8 @@ body{
     }
 }
 
-.mobile-nav-expand{
-    position: relative;
+#cta{
     display: none !important;
-    margin-left: 12px !important;
-    top: -12px;
 }
 
 @mixin mq($width, $type: max) {
@@ -152,6 +167,14 @@ body{
 
 @include mq(475px) {
 
+    .nav-spacer{
+        width: 0;
+    }
+
+    .nav{
+        margin-bottom: 20px;
+    }
+
     .shrinked{
         width: 69px;
         .nav-word{
@@ -163,8 +186,64 @@ body{
         margin-right: 20px;
     }
 
-    .mobile-nav-expand{
+    #cta{
         display: block !important;
     }
+}
 
+#cta{
+    width:100%;
+    height: 40px;
+    position: relative;
+    bottom: 15px;
+    left: 0px;
+
+}
+
+#cta .arrow{left: 30%;}
+.arrow {position: absolute; bottom: 0;  margin-left:0px; width: 12px; height: 12px; background-size: contain; top:15px;}
+.segunda{margin-left: 8px;}
+.next {
+	background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+}
+
+.arrow-left{
+    transform: rotate(180deg);
+    left: -80px !important;
+}
+
+@keyframes bounceAlpha {
+  0% {opacity: 1; transform: translateX(0px) scale(1);}
+  25%{opacity: 0; transform:translateX(10px) scale(0.9);}
+  26%{opacity: 0; transform:translateX(-10px) scale(0.9);}
+  55% {opacity: 1; transform: translateX(0px) scale(1);}
+}
+
+.bounceAlpha {
+    animation-name: bounceAlpha;
+    animation-duration:1.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+.arrow.primera.bounceAlpha {
+    animation-name: bounceAlpha;
+    animation-duration:1.4s;
+    animation-delay:0.2s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+
+.arrow{
+    animation-name: bounceAlpha;
+    animation-duration:1.4s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
+}
+.arrow.primera{
+    animation-name: bounceAlpha;
+    animation-duration:1.4s;
+    animation-delay:0.2s;
+    animation-iteration-count:infinite;
+    animation-timing-function:linear;
 }

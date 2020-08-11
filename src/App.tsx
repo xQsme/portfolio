@@ -17,6 +17,7 @@ class App extends Component <{}, AppState> {
   render () {
     return(
       <div className="App" id="app">
+        <div className="nav-spacer" />
         <Nav />
         <Content />
       </div>
