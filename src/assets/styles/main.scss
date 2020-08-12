@@ -108,8 +108,14 @@ body{
 
 
 .side-by-side{
-    display: flex;
-    align-items: flex-start;
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(2, 1fr); 
+  grid-column-gap: var(--spacing-l);
+  grid-row-gap: var(--spacing-l);
+  width: 100%;
+  margin: auto;
+  align-items: flex-start;
 }
 
 #about{
@@ -129,12 +135,13 @@ body{
 
     .me{
         max-width: 310px;
-        width: 50%;
-        margin-right: 25px;
+        margin-right: 12px;
         margin-left: auto;
         border-radius: 10px;
+        width: 75%;
     }
     .about-container{
+        margin-left: 12px;
         margin-right: auto;
     }
 }
@@ -530,21 +537,26 @@ body{
 }
 
 @include mq(800px) {
-    .side-by-side{
-        flex-direction: column;
-    }
+  .side-by-side{
+    grid-template-columns: repeat(1, 1fr); 
 
     .me{
-        width: 100% !important;
+      margin: 0 !important;
+      width: 100% !important;
     }
 
-    .card-grid{
-        grid-template-columns: repeat(1, 1fr); 
+    .about-container{
+      margin: 0 !important;
     }
+  }
 
-    .technologies-container{
-        grid-template-columns: repeat(2, 1fr); 
-    }
+  .card-grid{
+      grid-template-columns: repeat(1, 1fr); 
+  }
+
+  .technologies-container{
+      grid-template-columns: repeat(2, 1fr); 
+  }
 }
 
 @include mq(475px) {
