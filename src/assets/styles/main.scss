@@ -2,6 +2,9 @@ $main: #BF9B30;
 $background: #222222;
 $secondarybg: #303030;;
 $text: #FFFFFF;
+$blue: #00AEEF;
+$green: #41CD52;
+$red: #D53C4E;
 
 :root{
     --background-dark: #2d3548;
@@ -79,6 +82,10 @@ body{
        -moz-user-select: none; /* Old versions of Firefox */
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none;
+}
+
+#contacts{
+  margin-bottom: 20px;
 }
 
 .content{
@@ -236,6 +243,154 @@ body{
     }
 }
 
+.projects-container{
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-column-gap: var(--spacing-l);
+  grid-row-gap: var(--spacing-l);
+  width: 100%;
+  justify-items: center;
+  margin: auto;
+  align-items: flex-start;
+  .project{
+      width: 100%;
+      max-width: 300px;
+      border-radius: 10px;
+      background-color: $secondarybg;
+      padding: 20px;
+      position: relative;    
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      img{
+          width: 33%;
+          margin: auto;
+      }
+
+      .wider{
+        width: 100%;
+      }
+
+      h3{
+          text-align: center;
+          color: $text;
+          font-size: 1rem;
+          text-shadow: 2px 2px 20px rgba(0,0,0,0.2);
+          margin: 10px;
+      }
+
+      .project-divider{
+        height: 4px;
+        width: 100%;
+        background-color: $text;
+        border-radius: 2px;
+        margin-bottom: 5px;
+      }
+
+      .gold{
+        background-color: $main;
+      }
+
+      .blue{
+        background-color: $blue;
+      }
+
+      .red{
+        background-color: $red;
+      }
+
+      .green{
+        background-color: $green;
+      }
+
+      p{
+        margin: 5px 0;
+      }
+
+      .project-filler{
+        flex: 1 1 auto;
+      }
+
+      .MuiButtonBase-root{
+        width: 100%;
+      }
+  }
+}
+
+.contacts-container{
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(3, 1fr); 
+  grid-column-gap: var(--spacing-l);
+  grid-row-gap: var(--spacing-l);
+  width: 100%;
+  justify-items: center;
+  margin: auto;
+  align-items: flex-start;
+
+  .contact{
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;    
+    display: flex;
+    text-decoration: none;
+    height: 100%;
+
+    .contact-divider{
+      height: 100%;
+      width: 4px;
+      background-color: $text;
+      border-radius: 2px;
+      margin: 0 20px;
+    }
+
+    .contact-header-container{
+      display: flex;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;      
+    }
+
+    h3{
+      color: $text;
+    }
+
+    img{
+        width: 25%;
+    }
+  }
+}
+
+.gradient1{
+  background: #A76DC7;
+  background: -webkit-linear-gradient(bottom left, #A76DC7, #ACC4C5);
+  background: -moz-linear-gradient(bottom left, #A76DC7, #ACC4C5);
+  background: linear-gradient(to top right, #A76DC7, #ACC4C5);
+}
+
+.gradient2{
+  background: #9BBAC5;
+  background: -webkit-linear-gradient(bottom right, #9BBAC5, #116085);
+  background: -moz-linear-gradient(bottom right, #9BBAC5, #116085);
+  background: linear-gradient(to top left, #9BBAC5, #116085);
+}
+
+.gradient3{
+  background: #C73E1A;
+  background: -webkit-linear-gradient(bottom left, #C73E1A, #C1C6B2);
+  background: -moz-linear-gradient(bottom left, #C73E1A, #C1C6B2);
+  background: linear-gradient(to top right, #C73E1A, #C1C6B2);
+}
+
+
+.clickable{
+  cursor: pointer;
+}
+
 
 #cta{
     display: none !important;
@@ -346,9 +501,27 @@ body{
         grid-template-columns: repeat(2, 1fr); 
     }
 
+    .projects-container{
+      grid-template-columns: repeat(2, 1fr); 
+    }
+
     .technologies-container{
         grid-template-columns: repeat(3, 1fr); 
     }
+
+    .contacts-container{
+      grid-template-columns: repeat(2, 1fr); 
+    }
+}
+
+@include mq(1000px) {
+  .contacts-container{
+    grid-template-columns: repeat(1, 1fr); 
+  }
+
+  .projects-container{
+    grid-template-columns: repeat(1, 1fr); 
+  }
 }
 
 @include mq(800px) {

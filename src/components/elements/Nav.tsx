@@ -92,7 +92,7 @@ class Nav extends Component <NavProps, NavState> {
     this.setState({currentSection: index});
     setTimeout(() => {
       maybeMyElement.addEventListener("scroll", this.scrollFunc);
-    }, 500);
+    }, 350);
   }
 
   toggleExpanded = () => {

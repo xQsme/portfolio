@@ -17,6 +17,13 @@ import arch from '../assets/images/arch.png';
 import aws from '../assets/images/aws.png';
 import quarkus from '../assets/images/quarkus.png';
 import git from '../assets/images/git.png';
+import kensentme from '../assets/images/logo.svg';
+import c4v from '../assets/images/c4v.png';
+import flomics from '../assets/images/flomics.png';
+import github from '../assets/images/github.png';
+import linked from '../assets/images/linked.png';
+import mail from '../assets/images/mail.png';
+import Button from '@material-ui/core/Button';
 
 let cards: any = [];
 let tech: any = [];
@@ -247,37 +254,74 @@ class Content extends Component <ContentProps, ContentState> {
                 <div className="section-title">
                     <h1><Projects />Projects</h1>
                 </div>
-                <p>
-                Minima beatae voluptatibus numquam temporibus. Fugit aut nobis iste. Sint est distinctio fugit velit dolor accusamus eaque ut. Aut corrupti ut nihil porro quas id dicta quia. Et impedit ut soluta labore consequatur possimus dolores.
-                </p>
-                <p>
-                Id et quo cupiditate saepe. Harum incidunt autem dolorum sed eius dignissimos enim et. Id itaque voluptatem sint asperiores minus voluptatum.
-                </p>
-                Consectetur occaecati omnis voluptas blanditiis. Deleniti dolores iusto nulla delectus. Dolorum nihil expedita velit doloribus qui quas. Eaque illum impedit neque libero neque itaque qui. Illo expedita vitae qui omnis officiis et qui sit. Totam aut facere commodi magnam autem aut.
-                <p>
-                Nam molestiae ex qui alias. Quos voluptates reiciendis nulla sit suscipit modi. Rerum quis ipsa facilis non laborum dolor qui soluta.
-                </p>
-                <p>
-                Doloremque aliquam qui quisquam atque vero. Sed sequi inventore aut. Dolor cupiditate cupiditate voluptatem eligendi quo. Odit molestiae similique sapiente nulla possimus voluptas. Iste dolorem a non quia eaque temporibus rerum similique.
-                </p>
+                <div className="projects-container">
+                    <div className="project">
+                        <img className="wider" src={flomics} alt="Flomics Bioinformatics Cloud" />
+                        <h3>Flomics Bioinformatics Cloud</h3>
+                        <div className="project-divider blue" />
+                        <p>Flomics Bioinformatics Cloud extracts the most out of NGS data. It takes any kind of next-generation sequencing experiment data and, with 2 clicks, generates interpretable information. Everything in the cloud.</p>
+                        <p>This Platform is comprised of a webserver written in Node.js and a client written in React.js, it is deployed on AWS Elastic Beanstalk and interacts Amazon's S3, SQS, Lambda, EC2 and Batch services.</p>
+                        <div className="project-filler" />
+                        <a target="_blank" rel="noopener noreferrer" href="https://cloud.flomics.com/"><Button className="blue" variant="contained" color="primary">Website</Button></a>
+                    </div>
+                    <div className="project">
+                        <img src={qt} alt="Regenerator Location Problem" />
+                        <h3>Regenerator Location Problem</h3>
+                        <div className="project-divider green" />
+                        <p>In optical networks, the strength of an optical signal deteriorates as it gets farther from the source due to transmission impairments in the fiber (attenuation, dispersion, cross-talk).
+                        Therefore, it is necessary to regenerate the signals periodically using regenerators.</p>
+                        <p>This project was developed in Qt C++, and it uses genetic algorithms to optimize the placement of regenerators in a network.</p>
+                        <div className="project-filler" />
+                        <a target="_blank" rel="noopener noreferrer" href="https://github.com/xQsme/RLP_Qt"><Button className="green" variant="contained" color="primary">Repository</Button></a>
+                    </div>
+                    <div className="project">
+                        <img src={kensentme} alt="Kensentme Forensics" />
+                        <h3>Kensentme Forensics</h3>
+                        <div className="project-divider red" />
+                        <p>As a master's thesis subject I conducted a 9 month long internship in a local software company and developed this forensics platform based on the existing Autopsy platform, adapted into a server-client model and allowing collaboration out of the box.</p>
+                        <p>This platform is comprised of a webserver written using the Quarkus Java framework and a client wirtten in React.js.</p>
+                        <div className="project-filler" />
+                        <Button className="red" variant="contained" color="primary" disabled>Unavailable</Button>
+                    </div>
+                    <div className="project">
+                        <img src={c4v} alt="Care 4 Value" />
+                        <h3>Care 4 Value</h3>
+                        <div className="project-divider blue" />
+                        <p>The rise in healthcare costs is a major concern nowadays, especially for chronic diseases scenarios as the ones experienced in long-term healthcare units.
+                            Thus, arranging for a platform that helps these healthcare units to monitor and visualize the costs and eventual life quality gains on a per patient basis is essential.</p>
+                        <p>This platform is comprised of a webserver written using the Laravel PHP framework, and a mobile application written in React Native.</p>
+                        <div className="project-filler" />
+                        <a target="_blank" rel="noopener noreferrer" href="http://care4value.pt/"><Button className="blue" variant="contained" color="primary">Website</Button></a>
+                    </div>
+                </div>
             </section>
             <section id="contacts">
                 <div className="section-title">
                     <h1><Contacts />Contacts</h1>
                 </div>
-                <p>
-                Minima beatae voluptatibus numquam temporibus. Fugit aut nobis iste. Sint est distinctio fugit velit dolor accusamus eaque ut. Aut corrupti ut nihil porro quas id dicta quia. Et impedit ut soluta labore consequatur possimus dolores.
-                </p>
-                <p>
-                Id et quo cupiditate saepe. Harum incidunt autem dolorum sed eius dignissimos enim et. Id itaque voluptatem sint asperiores minus voluptatum.
-                </p>
-                Consectetur occaecati omnis voluptas blanditiis. Deleniti dolores iusto nulla delectus. Dolorum nihil expedita velit doloribus qui quas. Eaque illum impedit neque libero neque itaque qui. Illo expedita vitae qui omnis officiis et qui sit. Totam aut facere commodi magnam autem aut.
-                <p>
-                Nam molestiae ex qui alias. Quos voluptates reiciendis nulla sit suscipit modi. Rerum quis ipsa facilis non laborum dolor qui soluta.
-                </p>
-                <p>
-                Doloremque aliquam qui quisquam atque vero. Sed sequi inventore aut. Dolor cupiditate cupiditate voluptatem eligendi quo. Odit molestiae similique sapiente nulla possimus voluptas. Iste dolorem a non quia eaque temporibus rerum similique.
-                </p>
+                <div className="contacts-container">
+                    <a target="_blank" rel="noopener noreferrer" href="https://github.com/xQsme" className="contact gradient1">
+                        <img src={github} alt="GitHub" />
+                        <div className="contact-divider" />
+                        <div className="contact-header-container">
+                            <h3>GitHub</h3>
+                        </div>
+                    </a>
+                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/pedro-ferreira-5114b8167/" className="contact gradient2">
+                        <img src={linked} alt="LinkedIn" />
+                        <div className="contact-divider" />
+                        <div className="contact-header-container">
+                            <h3>LinkedIn</h3>
+                        </div>
+                    </a>
+                    <a target="_blank" rel="noopener noreferrer" href="mailto:pedro-ferreira92@hotmail.com" className="contact gradient3">
+                        <img src={mail} alt="E-mail" />
+                        <div className="contact-divider" />
+                        <div className="contact-header-container">
+                            <h3>E-mail</h3>
+                        </div>
+                    </a>
+                </div>
             </section>
         </div>
     );
