@@ -10,20 +10,71 @@ import front from '../assets/images/front.png';
 import back from '../assets/images/back.png';
 import services from '../assets/images/services.png';
 
-interface AppState {
+let cards: any = [];
+let maybeMyElement: HTMLElement = document.getElementById('app') as HTMLElement;
+let lastScrollTop = 0;
+let lastScroll = Date.now();
+
+interface ContentState {
+    currentSkill: number,
 }
 
 interface ContentProps {
 }
 
-class Content extends Component <ContentProps, AppState> {
+class Content extends Component <ContentProps, ContentState> {
   constructor(props: any) {
     super(props);
     this.state = {
+        currentSkill: -1,
     };
   }
 
+  scrollFunc = (event: any) => {
+    if(maybeMyElement.offsetWidth <= 475){
+        let time = Date.now();
+        if(lastScroll + 300 <= time) {
+          lastScroll = time;
+            let fromTop = maybeMyElement.scrollTop;
+            var st = window.pageYOffset || maybeMyElement.scrollTop;
+            if (st > lastScrollTop){
+                let found = false;
+                cards.forEach((card: any, index: number) => {
+                  if(card.offsetTop <= (fromTop + card.offsetHeight/3*2) && (card.offsetTop + card.offsetHeight/3) > fromTop) {
+                    this.setState({currentSkill: index})
+                    found = true;
+                    return;
+                  }
+                });
+                if(!found) {
+                    this.setState({currentSkill: -1})
+                }
+            } else {
+                let found = false;
+                cards.forEach((card: any, index: number) => {
+                  if(card.offsetTop <= (fromTop + card.offsetHeight) && (card.offsetTop + card.offsetHeight/3) > fromTop) {
+                    this.setState({currentSkill: index})
+                    found = true;
+                    return;
+                  }
+                });
+                if(!found) {
+                    this.setState({currentSkill: -1})
+                }
+            }
+            lastScrollTop = st <= 0 ? 0 : st; 
+        }
+    }
+  }
+
+  componentDidMount() {
+    cards = document.querySelectorAll(".card-grid .card");
+    maybeMyElement = document.getElementById('app') as HTMLElement;
+    maybeMyElement.addEventListener("scroll", this.scrollFunc);
+  }
+
   render () {
+    const { currentSkill } = this.state;
     return(
         <div className="content">
             <section id="about">
@@ -51,27 +102,27 @@ class Content extends Component <ContentProps, AppState> {
                 </div>
                 <div className="card-grid">
                     <div className="card">
-                        <div className="card__background" style={{backgroundImage: 'url(' + front + ')'}}></div>
+                        <div className={"card__background" + (currentSkill === 0 ? ' active' : '')} style={{backgroundImage: 'url(' + front + ')'}}></div>
                         <div className="card__content">
                             <h3 className="card__heading">Frontend Development</h3>
                         </div>
                     </div>
                     <div className="card">
-                        <div className="card__background" style={{backgroundImage: 'url(' + back + ')'}}></div>
+                        <div className={"card__background" + (currentSkill === 1 ? ' active' : '')} style={{backgroundImage: 'url(' + back + ')'}}></div>
                         <div className="card__content">
                             <h3 className="card__heading">Backend Development</h3>
                         </div>
                     </div>
                     <div className="card">
-                        <div className="card__background" style={{backgroundImage: 'url(' + services + ')'}}></div>
+                        <div className={"card__background" + (currentSkill === 2 ? ' active' : '')} style={{backgroundImage: 'url(' + services + ')'}}></div>
                         <div className="card__content">
                             <h3 className="card__heading">Service Integration</h3>
                         </div>
                     </div>
                     <div className="card">
-                        <div className="card__background" style={{backgroundImage: 'url(' + linux + ')'}}></div>
+                        <div className={"card__background" + (currentSkill === 3 ? ' active' : '')} style={{backgroundImage: 'url(' + linux + ')'}}></div>
                         <div className="card__content">
-                            <h3 className="card__heading">Linux Skills</h3>
+                            <h3 className="card__heading">Operating Systems</h3>
                         </div>
                     </div>
                 </div>

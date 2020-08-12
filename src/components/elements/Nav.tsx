@@ -9,6 +9,7 @@ import Contacts from '@material-ui/icons/Chat';
 let mainNavLinks: any = [];
 let maybeMyElement: HTMLElement = document.getElementById('app') as HTMLElement;
 let navContainer: HTMLElement = document.getElementById('nav-container') as HTMLElement;
+let lastScroll = Date.now();
 
 interface NavProps {
 }
@@ -32,15 +33,18 @@ class Nav extends Component <NavProps, NavState> {
   }
 
   scrollFunc = (event: any) => {
-    let fromTop = maybeMyElement.scrollTop;
-  
-    mainNavLinks.forEach((link: any, index: number) => {
-      let section = document.querySelector(link.hash);
-      if(section && section.offsetTop <= (fromTop + 50)) {
-        this.setState({currentSection: index})
-        return;
-      }
-    });
+    let time = Date.now();
+    if(lastScroll + 100 <= time) {
+      lastScroll = time;
+      let fromTop = maybeMyElement.scrollTop;
+      mainNavLinks.forEach((link: any, index: number) => {
+        let section = document.querySelector(link.hash);
+        if(section && section.offsetTop <= (fromTop + 50)) {
+          this.setState({currentSection: index})
+          return;
+        }
+      });
+    }
   }
 
   componentDidMount() { 

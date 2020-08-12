@@ -219,17 +219,14 @@ body{
   
   .card-grid{
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(4, 1fr); 
     grid-column-gap: var(--spacing-l);
     grid-row-gap: var(--spacing-l);
     max-width: var(--width-container);
     width: 100%;
     justify-items: center;
+    margin: auto;
   }
-  
-    .card-grid{
-        grid-template-columns: repeat(4, 1fr); 
-    }
   
   .card{
     list-style: none;
@@ -264,6 +261,10 @@ body{
   }
   
   .card:hover .card__background{
+    transform: scale(1.05) translateZ(0);
+  }
+
+  .card .active{
     transform: scale(1.05) translateZ(0);
   }
   
