@@ -149,19 +149,19 @@ class Content extends Component <ContentProps, ContentState> {
                         <h3>Node.js</h3>
                     </div>
                     <div className="technology bounceInRight">
-                        <img src={quarkus} alt="Node.js" />
+                        <img src={quarkus} alt="Quarkus" />
                         <h3>Quarkus</h3>
                     </div>
                     <div className="technology bounceInRight">
-                        <img src={qt} alt="Node.js" />
+                        <img src={qt} alt="Qt" />
                         <h3>Qt</h3>
                     </div>
                     <div className="technology bounceInLeft">
-                        <img src={sass} alt="Node.js" />
+                        <img src={sass} alt="Sass" />
                         <h3>Sass</h3>
                     </div>
                     <div className="technology bounceInLeft">
-                        <img src={git} alt="Node.js" />
+                        <img src={git} alt="Git" />
                         <h3>Git</h3>
                     </div>
                     <div className="technology bounceInLeft">
