@@ -260,7 +260,7 @@ class Content extends Component <ContentProps, ContentState> {
                         <h3>Flomics Bioinformatics Cloud</h3>
                         <div className="project-divider blue" />
                         <p>Flomics Bioinformatics Cloud extracts the most out of NGS data. It takes any kind of next-generation sequencing experiment data and, with 2 clicks, generates interpretable information. Everything in the cloud.</p>
-                        <p>This Platform is comprised of a webserver written in Node.js and a client written in React.js, it is deployed on AWS Elastic Beanstalk and interacts Amazon's S3, SQS, Lambda, EC2 and Batch services.</p>
+                        <p>This Platform is comprised of a webserver written in Node.js and a client written in React.js, it is deployed on AWS Elastic Beanstalk and interacts with Amazon's S3, SQS, Lambda, EC2 and Batch services.</p>
                         <div className="project-filler" />
                         <a target="_blank" rel="noopener noreferrer" href="https://cloud.flomics.com/"><Button className="blue" variant="contained" color="primary">Website</Button></a>
                     </div>
