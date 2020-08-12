@@ -9,6 +9,14 @@ import linux from '../assets/images/linux.png';
 import front from '../assets/images/front.png';
 import back from '../assets/images/back.png';
 import services from '../assets/images/services.png';
+import node from '../assets/images/node.svg';
+import react from '../assets/images/react.png';
+import qt from '../assets/images/qt.png';
+import sass from '../assets/images/sass.svg';
+import arch from '../assets/images/arch.png';
+import aws from '../assets/images/aws.png';
+import quarkus from '../assets/images/quarkus.png';
+import git from '../assets/images/git.png';
 
 let cards: any = [];
 let maybeMyElement: HTMLElement = document.getElementById('app') as HTMLElement;
@@ -131,19 +139,40 @@ class Content extends Component <ContentProps, ContentState> {
                 <div className="section-title">
                     <h1><Technologies />Technologies</h1>
                 </div>
-                <p>
-                Minima beatae voluptatibus numquam temporibus. Fugit aut nobis iste. Sint est distinctio fugit velit dolor accusamus eaque ut. Aut corrupti ut nihil porro quas id dicta quia. Et impedit ut soluta labore consequatur possimus dolores.
-                </p>
-                <p>
-                Id et quo cupiditate saepe. Harum incidunt autem dolorum sed eius dignissimos enim et. Id itaque voluptatem sint asperiores minus voluptatum.
-                </p>
-                Consectetur occaecati omnis voluptas blanditiis. Deleniti dolores iusto nulla delectus. Dolorum nihil expedita velit doloribus qui quas. Eaque illum impedit neque libero neque itaque qui. Illo expedita vitae qui omnis officiis et qui sit. Totam aut facere commodi magnam autem aut.
-                <p>
-                Nam molestiae ex qui alias. Quos voluptates reiciendis nulla sit suscipit modi. Rerum quis ipsa facilis non laborum dolor qui soluta.
-                </p>
-                <p>
-                Doloremque aliquam qui quisquam atque vero. Sed sequi inventore aut. Dolor cupiditate cupiditate voluptatem eligendi quo. Odit molestiae similique sapiente nulla possimus voluptas. Iste dolorem a non quia eaque temporibus rerum similique.
-                </p>
+                <div className="technologies-container">
+                    <div className="technology bounceInRight">
+                        <img src={react} alt="React.js" />
+                        <h3>React.js</h3>
+                    </div>
+                    <div className="technology bounceInRight">
+                        <img src={node} alt="Node.js" />
+                        <h3>Node.js</h3>
+                    </div>
+                    <div className="technology bounceInRight">
+                        <img src={quarkus} alt="Node.js" />
+                        <h3>Quarkus</h3>
+                    </div>
+                    <div className="technology bounceInRight">
+                        <img src={qt} alt="Node.js" />
+                        <h3>Qt</h3>
+                    </div>
+                    <div className="technology bounceInLeft">
+                        <img src={sass} alt="Node.js" />
+                        <h3>Sass</h3>
+                    </div>
+                    <div className="technology bounceInLeft">
+                        <img src={git} alt="Node.js" />
+                        <h3>Git</h3>
+                    </div>
+                    <div className="technology bounceInLeft">
+                        <img src={aws} alt="AWS" />
+                        <h3>AWS</h3>
+                    </div>
+                    <div className="technology bounceInLeft">
+                        <img src={arch} alt="Linux" />
+                        <h3>Linux</h3>
+                    </div>
+                </div>
             </section>
             <section id="projects">
                 <div className="section-title">
