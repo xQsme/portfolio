@@ -10,6 +10,8 @@ let mainNavLinks: any = [];
 let maybeMyElement: HTMLElement = document.getElementById('app') as HTMLElement;
 let navContainer: HTMLElement = document.getElementById('nav-container') as HTMLElement;
 let lastScroll = Date.now();
+let ignoreScroll = false;
+let timeout: any = null;
 
 interface NavProps {
 }
@@ -33,17 +35,19 @@ class Nav extends Component <NavProps, NavState> {
   }
 
   scrollFunc = (event: any) => {
-    let time = Date.now();
-    if(lastScroll + 100 <= time) {
-      lastScroll = time;
-      let fromTop = maybeMyElement.scrollTop;
-      mainNavLinks.forEach((link: any, index: number) => {
-        let section = document.querySelector(link.hash);
-        if(section && section.offsetTop <= (fromTop + 50)) {
-          this.setState({currentSection: index})
-          return;
-        }
-      });
+    if(!ignoreScroll) {
+      let time = Date.now();
+      if(lastScroll + 100 <= time) {
+        lastScroll = time;
+        let fromTop = maybeMyElement.scrollTop;
+        mainNavLinks.forEach((link: any, index: number) => {
+          let section = document.querySelector(link.hash);
+          if(section && section.offsetTop <= (fromTop + maybeMyElement.offsetHeight/3)) {
+            this.setState({currentSection: index})
+            return;
+          }
+        });
+      }
     }
   }
 
@@ -87,12 +91,16 @@ class Nav extends Component <NavProps, NavState> {
     }
   }
 
-  scrollTo = (index: number) => {
-    maybeMyElement.removeEventListener("scroll", this.scrollFunc);
+  scrollTo = (index: number, evt: any) => {
+    evt.preventDefault();
+    clearTimeout(timeout);
+    ignoreScroll = true;
     this.setState({currentSection: index});
-    setTimeout(() => {
-      maybeMyElement.addEventListener("scroll", this.scrollFunc);
-    }, 350);
+    let section = document.querySelector(mainNavLinks[index].hash);
+    maybeMyElement.scrollTo(0, index === 0? 0 : section.offsetTop);
+    timeout = setTimeout(() => {
+      ignoreScroll = false;
+    }, 1000);
   }
 
   toggleExpanded = () => {
@@ -120,31 +128,31 @@ class Nav extends Component <NavProps, NavState> {
           <div className="nav-border-selected" style={{marginTop: currentSection*30 + 'px'}} />
           <div className={"nav-element" + (currentSection === 0 ? " active" : "")}>
               <div className="nav-border"/>
-              <a href="#about" onClick={() => this.scrollTo(0)}>
+              <a href="#about" onClick={evt => this.scrollTo(0, evt)}>
                   <p className="nav-entry"><About /><span className="nav-word">About Me</span></p>
               </a>
           </div>
           <div className={"nav-element" + (currentSection === 1 ? " active" : "")}>
               <div className="nav-border"/>
-              <a href="#skills" onClick={() => this.scrollTo(1)}>
+              <a href="#skills" onClick={evt => this.scrollTo(1, evt)}>
               <p className="nav-entry"><Skills /><span className="nav-word">Skills</span></p>
               </a>
           </div>
           <div className={"nav-element" + (currentSection === 2 ? " active" : "")}>
               <div className="nav-border"/>
-              <a href="#technologies" onClick={() => this.scrollTo(2)}>
+              <a href="#technologies" onClick={evt => this.scrollTo(2, evt)}>
               <p className="nav-entry"><Technologies /><span className="nav-word">Technologies</span></p>
               </a>
           </div>
           <div className={"nav-element" + (currentSection === 3 ? " active" : "")}>
               <div className="nav-border"/>
-              <a href="#projects" onClick={() => this.scrollTo(3)}>
+              <a href="#projects" onClick={evt => this.scrollTo(3, evt)}>
               <p className="nav-entry"><Projects /><span className="nav-word">Projects</span></p>
               </a>
           </div>
           <div className={"nav-element" + (currentSection === 4 ? " active" : "")}>
               <div className="nav-border"/>
-              <a href="#contacts" onClick={() => this.scrollTo(4)}>
+              <a href="#contacts" onClick={evt => this.scrollTo(4, evt)}>
               <p className="nav-entry"><Contacts /><span className="nav-word">Contacts</span></p>
               </a>
           </div>

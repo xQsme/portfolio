@@ -109,7 +109,6 @@ body{
 
 .side-by-side{
   display: grid;
-  grid-auto-rows: 1fr;
   grid-template-columns: repeat(2, 1fr); 
   grid-column-gap: var(--spacing-l);
   grid-row-gap: var(--spacing-l);
