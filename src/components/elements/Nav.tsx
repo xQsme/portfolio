@@ -9,11 +9,11 @@ import Contacts from '@material-ui/icons/Chat';
 let mainNavLinks: any = [];
 let maybeMyElement: HTMLElement = document.getElementById('app') as HTMLElement;
 let navContainer: HTMLElement = document.getElementById('nav-container') as HTMLElement;
-let lastScroll = Date.now();
 let ignoreScroll = false;
 let timeout: any = null;
 
 interface NavProps {
+  setFunc: Function,
 }
 
 interface NavState {
@@ -36,25 +36,21 @@ class Nav extends Component <NavProps, NavState> {
 
   scrollFunc = (event: any) => {
     if(!ignoreScroll) {
-      let time = Date.now();
-      if(lastScroll + 100 <= time) {
-        lastScroll = time;
-        let fromTop = maybeMyElement.scrollTop;
-        mainNavLinks.forEach((link: any, index: number) => {
-          let section = document.querySelector(link.hash);
-          if(section && section.offsetTop <= (fromTop + maybeMyElement.offsetHeight/3)) {
-            this.setState({currentSection: index})
-            return;
-          }
-        });
-      }
+      let fromTop = maybeMyElement.scrollTop;
+      mainNavLinks.forEach((link: any, index: number) => {
+        let section = document.querySelector(link.hash);
+        if(section && section.offsetTop <= (fromTop + maybeMyElement.offsetHeight/4)) {
+          this.setState({currentSection: index})
+          return;
+        }
+      });
     }
   }
 
   componentDidMount() { 
     mainNavLinks = document.querySelectorAll(".nav .nav-element a");
     maybeMyElement = document.getElementById('app') as HTMLElement;
-    maybeMyElement.addEventListener("scroll", this.scrollFunc);
+    this.props.setFunc(this.scrollFunc);
     navContainer = document.getElementById('nav-container') as HTMLElement;
     navContainer.addEventListener("mousedown", this.mouseDown);
     navContainer.addEventListener("mousemove", this.mouseMove);
