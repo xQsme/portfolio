@@ -269,14 +269,23 @@ body{
       display: flex;
       flex-direction: column;
       height: 100%;
-      img{
-          width: 33%;
-          margin: auto;
-      }
 
-      .wider{
-        width: 100%;
-      }
+    .project-image{
+        height: 90px;
+        display: flex;
+        
+
+        img{
+            width: 33%;
+            margin: auto;
+        }
+
+        .wider{
+            width: 100%;
+          }
+    
+    }
+
 
       h3{
           text-align: center;
