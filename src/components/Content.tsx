@@ -23,6 +23,7 @@ import flomics from '../assets/images/flomics.png';
 import github from '../assets/images/github.png';
 import linked from '../assets/images/linked.png';
 import mail from '../assets/images/mail.png';
+import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 let cards: any = [];
@@ -78,7 +79,7 @@ class Content extends Component <ContentProps, ContentState> {
             }
         }
         tech.forEach((t: HTMLElement) => {
-            if(!t.classList.contains('animated') && (t.offsetTop - maybeMyElement.offsetHeight) <= fromTop) {
+            if(!t.classList.contains('animated') && (t.offsetTop - maybeMyElement.offsetHeight*2/3) <= fromTop) {
                 let right = false;
                 if(maybeMyElement.offsetWidth > 1400) {
                     if(animated < 4) {
@@ -119,7 +120,7 @@ class Content extends Component <ContentProps, ContentState> {
         this.props.setFunc(this.scrollFunc);
         let fromTop = maybeMyElement.scrollTop;
         tech.forEach((t: HTMLElement) => {
-            if(!t.classList.contains('animated') && (t.offsetTop - maybeMyElement.offsetHeight) <= fromTop) {
+            if(!t.classList.contains('animated') && (t.offsetTop - maybeMyElement.offsetHeight*2/3) <= fromTop) {
                 let right = false;
                 if(maybeMyElement.offsetWidth > 1400) {
                     if(animated < 4) {
@@ -317,6 +318,34 @@ class Content extends Component <ContentProps, ContentState> {
                             </div>
                         </a>
                     </div>
+                    <form action="https://formspree.io/pedro-ferreira92@hotmail.com" method="post" className="contact-form">
+                    <div className="input-container">
+                        <TextField
+                            name="name"
+                            label="Name"
+                            margin="normal"
+                            inputProps={{ 'aria-label': 'bare' }}
+                            autoFocus
+                        />
+                        <TextField
+                            name="_replyto"
+                            label="Email"
+                            margin="normal"
+                            inputProps={{ 'aria-label': 'bare' }}
+                            autoFocus
+                        />
+                        <TextField
+                            name="message"
+                            label="Message"
+                            margin="normal"
+                            multiline
+                            rows="6"
+                            className="multiline-input"
+                            />
+                        <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission"/>
+                        <Button type="submit" className="green" variant="contained" color="primary">Submit Message</Button>
+                        </div>
+                    </form>
                 </section>
             </div>
         );

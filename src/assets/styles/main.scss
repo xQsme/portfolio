@@ -294,22 +294,6 @@ body{
         margin-bottom: 5px;
       }
 
-      .gold{
-        background-color: $main;
-      }
-
-      .blue{
-        background-color: $blue;
-      }
-
-      .red{
-        background-color: $red;
-      }
-
-      .green{
-        background-color: $green;
-      }
-
       p{
         margin: 5px 0;
       }
@@ -326,6 +310,75 @@ body{
         text-decoration: none;
       }
   }
+}
+
+.contact-form{
+  background-color: $secondarybg;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 50%;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.input-container{
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+
+  .MuiFormLabel-root{
+      color: $text !important;
+  }
+
+  .MuiInputBase-root, .MuiInputBase-root::before, .MuiInputBase-root::after{
+      border-color: $text !important;
+      color: $text;
+  }
+
+  .MuiFilledInput-input{
+      padding: 5px 0 5px 0;
+  }
+
+  .Mui-error{
+      color: $red !important;
+  }
+
+  .Mui-error::after{
+      border-color: $red !important;
+  }
+
+  .MuiInputBase-root{
+      color: $text !important;
+  }
+
+  .MuiSelect-icon{
+      color: $text;
+  }
+
+  .select{
+      margin-top: 15px;
+      margin-bottom: 10px;
+
+      .MuiSelect-root{
+          background-color: inherit;
+      }
+  }
+}
+
+.gold{
+  background-color: $main !important;
+}
+
+.blue{
+  background-color: $blue !important;
+}
+
+.red{
+  background-color: $red !important;
+}
+
+.green{
+  background-color: $green !important;
 }
 
 .contacts-container{
@@ -533,6 +586,10 @@ body{
   .projects-container{
     grid-template-columns: repeat(1, 1fr); 
   }
+
+  .contact-form{
+    max-width: 100%;
+  }
 }
 
 @include mq(800px) {
@@ -558,7 +615,7 @@ body{
   }
 }
 
-@include mq(475px) {
+@include mq(600px) {
 
   .technologies-container{
       grid-template-columns: repeat(1, 1fr); 
