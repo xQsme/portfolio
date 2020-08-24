@@ -252,7 +252,9 @@ class Content extends Component <ContentProps, ContentState> {
                     </div>
                     <div className="projects-container">
                         <div className="project">
-                            <img className="wider" src={flomics} alt="Flomics Bioinformatics Cloud" />
+                            <div className="project-image">
+                                <img className="wider" src={flomics} alt="Flomics Bioinformatics Cloud" />
+                            </div>
                             <h3>Flomics Bioinformatics Cloud</h3>
                             <div className="project-divider blue" />
                             <p>Flomics Bioinformatics Cloud extracts the most out of NGS data. It takes any kind of next-generation sequencing experiment data and, with 2 clicks, generates interpretable information. Everything in the cloud.</p>
@@ -261,7 +263,9 @@ class Content extends Component <ContentProps, ContentState> {
                             <a target="_blank" rel="noopener noreferrer" href="https://cloud.flomics.com/"><Button className="blue" variant="contained" color="primary">Website</Button></a>
                         </div>
                         <div className="project">
-                            <img src={qt} alt="Regenerator Location Problem" />
+                            <div className="project-image">
+                                <img src={qt} alt="Regenerator Location Problem" />
+                            </div>
                             <h3>Regenerator Location Problem</h3>
                             <div className="project-divider green" />
                             <p>In optical networks, the strength of an optical signal deteriorates as it gets farther from the source due to transmission impairments in the fiber (attenuation, dispersion, cross-talk).
@@ -271,7 +275,9 @@ class Content extends Component <ContentProps, ContentState> {
                             <a target="_blank" rel="noopener noreferrer" href="https://github.com/xQsme/RLP_Qt"><Button className="green" variant="contained" color="primary">Repository</Button></a>
                         </div>
                         <div className="project">
-                            <img src={kensentme} alt="Kensentme Forensics" />
+                            <div className="project-image">
+                                <img src={kensentme} alt="Kensentme Forensics" />
+                            </div>
                             <h3>Kensentme Forensics</h3>
                             <div className="project-divider red" />
                             <p>As a master's thesis subject I conducted a 9 month long internship in a local software company and developed this forensics platform based on the existing Autopsy platform, adapted into a server-client model and allowing collaboration out of the box.</p>
@@ -280,7 +286,9 @@ class Content extends Component <ContentProps, ContentState> {
                             <Button className="red" variant="contained" color="primary" disabled>Unavailable</Button>
                         </div>
                         <div className="project">
-                            <img src={c4v} alt="Care 4 Value" />
+                            <div className="project-image">
+                                <img src={c4v} alt="Care 4 Value" />
+                            </div>
                             <h3>Care 4 Value</h3>
                             <div className="project-divider blue" />
                             <p>The rise in healthcare costs is a major concern nowadays, especially for chronic diseases scenarios as the ones experienced in long-term healthcare units.
