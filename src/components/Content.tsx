@@ -25,6 +25,9 @@ import linked from '../assets/images/linked.png';
 import mail from '../assets/images/mail.png';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import emailjs from 'emailjs-com';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 let cards: any = [];
 let tech: any = [];
@@ -34,6 +37,10 @@ let animated = 0;
 
 interface ContentState {
     currentSkill: number,
+    name: string,
+    email: string,
+    message: string,
+    [key: string]: any;
 }
 
 interface ContentProps {
@@ -41,12 +48,36 @@ interface ContentProps {
 }
 
 class Content extends Component <ContentProps, ContentState> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-        currentSkill: -1,
-    };
-  }
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            currentSkill: -1,
+            name: '',
+            email: '',
+            message: '',
+        };
+    }
+
+    handleChange = (event: any): void => {
+        if (Object.keys(this.state).includes(event.target.name)) {
+            this.setState({[event.target.name]: event.target.value });
+        }
+    }
+
+    submitMessage = (): void => {
+        const { name, email, message } = this.state;        
+        const template_params = { name, email, message };
+        emailjs.send('default_service', 'template_6gV53pXN', template_params, 'user_3REIZ5H6lvmSFUGvWtEyh');
+        toast('✅ Message Sent!', {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    }
 
     scrollFunc = (event: any) => {
         let fromTop = maybeMyElement.scrollTop;
@@ -154,9 +185,10 @@ class Content extends Component <ContentProps, ContentState> {
     }
 
     render () {
-        const { currentSkill } = this.state;
+        const { currentSkill, name, email, message } = this.state;
         return(
             <div className="content">
+                <ToastContainer />
                 <section id="about">
                     <div className="side-by-side">
                         <img src={me} alt="me" className="me" />
@@ -326,32 +358,36 @@ class Content extends Component <ContentProps, ContentState> {
                             </div>
                         </a>
                     </div>
-                    <form action="https://formspree.io/pedro-ferreira92@hotmail.com" method="post" className="contact-form">
-                    <div className="input-container">
-                        <TextField
-                            name="name"
-                            label="Name"
-                            margin="normal"
-                            inputProps={{ 'aria-label': 'bare' }}
-                            autoFocus
-                        />
-                        <TextField
-                            name="_replyto"
-                            label="Email"
-                            margin="normal"
-                            inputProps={{ 'aria-label': 'bare' }}
-                            autoFocus
-                        />
-                        <TextField
-                            name="message"
-                            label="Message"
-                            margin="normal"
-                            multiline
-                            rows="6"
-                            className="multiline-input"
+                    <form className="contact-form">
+                        <div className="input-container">
+                            <TextField
+                                name="name"
+                                label="Name"
+                                margin="normal"
+                                inputProps={{ 'aria-label': 'bare' }}
+                                value={name}
+                                onChange={this.handleChange}
+                                autoFocus
                             />
-                        <input type="hidden" name="_subject" id="email-subject" value="Contact Form Submission"/>
-                        <Button type="submit" className="green" variant="contained" color="primary">Submit Message</Button>
+                            <TextField
+                                name="email"
+                                label="Email"
+                                margin="normal"
+                                inputProps={{ 'aria-label': 'bare' }}
+                                value={email}
+                                onChange={this.handleChange}
+                            />
+                            <TextField
+                                name="message"
+                                label="Message"
+                                margin="normal"
+                                multiline
+                                rows="6"
+                                value={message}
+                                onChange={this.handleChange}
+                                className="multiline-input"
+                                />
+                            <Button className="green" variant="contained" color="primary" onClick={this.submitMessage}>Submit Message</Button>
                         </div>
                     </form>
                 </section>
